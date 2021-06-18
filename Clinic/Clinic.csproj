@@ -54,10 +54,8 @@
     <Compile Include="Prescriptions\Prescription.cs" />
     <Compile Include="Prescriptions\Session.cs" />
     <Compile Include="Users\Patient.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Therapist.cs" />
-    <Compile Include="TimeAssets.cs" />
     <Compile Include="Prescriptions\Prescriptionable\Treatment.cs" />
     <Compile Include="Users\User.cs" />
   </ItemGroup>

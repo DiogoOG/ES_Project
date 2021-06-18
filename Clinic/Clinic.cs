@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    public class SingletonClinic
+    public class Clinic
     {
-        private SingletonClinic _instance = new SingletonClinic();
-        public SingletonClinic Clinic => _instance;
+        private static Clinic _instance = new Clinic();
+        public static Clinic Instance => _instance;
+
+
+        public void Open()
+        {
+        
+        }
+
     }
 }

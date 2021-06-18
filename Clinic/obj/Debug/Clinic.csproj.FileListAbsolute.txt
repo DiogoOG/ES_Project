@@ -5,3 +5,7 @@ C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\bi
 C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\bin\Debug\Clinic.pdb
 C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\obj\Debug\Clinic.exe
 C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\obj\Debug\Clinic.pdb
+C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.AssemblyReference.cache
+C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
+C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.exe
+C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.pdb
