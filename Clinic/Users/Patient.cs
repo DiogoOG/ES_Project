@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Clinic {
-    public class Patient : User 
-    {
+    public class Patient : User
+    { 
         private List<Prescription> _prescriptions;
     }
 }

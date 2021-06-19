@@ -3,7 +3,13 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
-    <Compile Update="Form1.cs">
+    <Compile Update="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormSignUp.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

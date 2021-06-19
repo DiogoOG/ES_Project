@@ -1,3 +1,4 @@
+using Clinic.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    public abstract class User
+    public abstract class User : Entity<int>
     {
-        private string _name;
-        private string _password;
-        public string Name { get => _name; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
-        public override string ToString() => Name;
+        public override string ToString()
+        {
+           return Username + "," + Password;
+        }
     }
 }

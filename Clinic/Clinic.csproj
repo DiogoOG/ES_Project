@@ -53,6 +53,13 @@
     <Compile Include="Prescriptions\Prescriptionable\Medication.cs" />
     <Compile Include="Prescriptions\Prescription.cs" />
     <Compile Include="Prescriptions\Session.cs" />
+    <Compile Include="Repository\PatientsRepository.cs" />
+    <Compile Include="Repository\FileRepository.cs" />
+    <Compile Include="Repository\InMemoryRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\TherapistsRepository.cs" />
+    <Compile Include="Users\Entity.cs" />
+    <Compile Include="Users\EntityToFileMapping.cs" />
     <Compile Include="Users\Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Therapist.cs" />
@@ -62,5 +69,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\patients.txt" />
+    <Content Include="Data\therapists.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

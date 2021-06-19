@@ -9,3 +9,9 @@ C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Deb
 C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
 C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.exe
 C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.pdb
+C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.exe.config
+C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.exe
+C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.pdb
+C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
+C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.exe
+C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.pdb
