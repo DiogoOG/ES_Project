@@ -15,3 +15,4 @@ C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.pdb
 C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
 C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.exe
 C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.pdb
+C:\Users\Install\Source\Repos\ES_Project\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache

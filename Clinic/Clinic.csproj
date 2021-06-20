@@ -57,6 +57,7 @@
     <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\InMemoryRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\PrescriptionsRepository.cs" />
     <Compile Include="Repository\TherapistsRepository.cs" />
     <Compile Include="Users\Entity.cs" />
     <Compile Include="Users\EntityToFileMapping.cs" />
@@ -71,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\patients.txt" />
+    <Content Include="Data\prescriptions.txt" />
     <Content Include="Data\therapists.txt" />
   </ItemGroup>
   <ItemGroup />

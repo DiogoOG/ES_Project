@@ -32,9 +32,9 @@ namespace Clinic.Repository
             if (entity == null)
                 throw new ArgumentNullException("Entity cannot be null!");
             if (entities.ContainsKey(entity.ID))
-                return entity;
+                return null;
             else entities.Add(entity.ID, entity);
-            return null;
+            return entity;
         }
 
         public int Size()

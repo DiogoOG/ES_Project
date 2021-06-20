@@ -1,6 +1,5 @@
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.csprojAssemblyReference.cache
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormLogin.resources
-C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormMainMenu.resources
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormSignUp.resources
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.csproj.GenerateResource.cache
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.AssemblyInfoInputs.cache
@@ -19,3 +18,6 @@ C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.dll
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.pdb
 C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.genruntimeconfig.cache
+C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormPatient.resources
+C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormTherapist.resources
+C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormCreatePrescription.resources

@@ -10,8 +10,12 @@ namespace Clinic
     {
         private string _name;
 
+        public Exercise(string name)
+        {
+            _name = name;
+        }
         public string Name { get => _name; set => _name = value; }
-        public string Type { get => GetType().Name; }
+        public string Type { get => "Exercise"; }
 
         public override string ToString() => Name;
     }

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using Clinic.Repository;
+using Clinic.Repository.Clinic.Repository;
 
 namespace ClinicInterface
 {
@@ -18,8 +19,11 @@ namespace ClinicInterface
 
             string therapistsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\therapists.txt";
             TherapistsRepository therapistsRepository = new TherapistsRepository(therapistsFilename);
-            
-            Controller controller = new Controller(patientsRepository, therapistsRepository);
+
+            string prescriptionsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\prescriptions.txt";
+            PrescriptionsRepository prescriptionsRepository = new PrescriptionsRepository(prescriptionsFilename);
+
+            Controller controller = new Controller(patientsRepository, therapistsRepository, prescriptionsRepository);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

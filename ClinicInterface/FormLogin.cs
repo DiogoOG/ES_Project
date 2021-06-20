@@ -14,6 +14,7 @@ namespace ClinicInterface
     public partial class FormLogin : Form
     {
         private Controller controller;
+        private User user;
 
         public FormLogin(Controller controller)
         {
@@ -39,11 +40,14 @@ namespace ClinicInterface
 
             string username = usernameBox.Text;
             string password = passwordBox.Text;
+            usernameBox.Text = "";
+            passwordBox.Text = "";
 
             if (username == "")
             {
                 usernameLabel.Text = "Invalid username!";
                 valid = false;
+                
             }
             if (password == "")
             {
@@ -53,7 +57,7 @@ namespace ClinicInterface
 
             if (valid)
             {
-                User user = controller.getPatientByUsername(username);
+                user = controller.getUserByUsername(username);
                 if (user == null)
                     errorLabel.Text = "The user doesn't exist!";
                 else
@@ -62,14 +66,34 @@ namespace ClinicInterface
                         errorLabel.Text = "Incorrect password!";
                     else
                     {
-                        FormMainMenu formMainMenu = new FormMainMenu(controller, this);
-                        formMainMenu.MdiParent = this.MdiParent;
-                        this.Hide();
-                        formMainMenu.Show();
+                        if (controller.isPatient(username))
+                        {
+                            openPatientForm();
+                        }
+                        else
+                        {
+                            openTherapistForm();
+                        }
+                        
                     }
                 }
             } 
         }
 
+        private void openPatientForm()
+        {
+            FormPatient formPatient = new FormPatient(controller, user, this);
+            formPatient.MdiParent = this.MdiParent;
+            this.Hide();
+            formPatient.Show();
+        }
+
+        private void openTherapistForm()
+        {
+            FormTherapist formTherapist = new FormTherapist(controller, user, this);
+            formTherapist.MdiParent = this.MdiParent;
+            this.Hide();
+            formTherapist.Show();
+        }
     }
 }

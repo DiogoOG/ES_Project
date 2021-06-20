@@ -11,8 +11,13 @@ namespace Clinic
         private string _name;
         private string _note;
 
+        public Treatment(string name)
+        {
+            _name = name;
+        }
+
         public string Name { get => _name; set => _name = value; }
-        public string Type { get => this.GetType().Name; }
+        public string Type { get => "Treatment"; }
 
         public string Note { get => _note; set => _note = value; }
 

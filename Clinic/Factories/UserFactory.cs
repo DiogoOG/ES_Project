@@ -6,8 +6,30 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    class UserFactory
+    public class UserFactory
     {
-        
+        public User getUser(string type, string username, string password)
+        {
+            User user;
+
+            if (type == "Patient")
+            {
+                user = new Patient()
+                {
+                    Username = username,
+                    Password = password
+                };
+            }
+            else
+            {
+                user = new Therapist()
+                {
+                    Username = username,
+                    Password = password
+                };
+            }
+
+            return user;
+        }
     }
 }

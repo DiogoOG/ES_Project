@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,14 +49,24 @@ namespace ClinicInterface
 
             if (valid)
             {
-                if (typeBox.SelectedItem.ToString() == "Patient")
-                    controller.savePatient(username, password);
-                else if (typeBox.SelectedItem.ToString() == "Therapist")
-                    controller.saveTherapist(username, password);
+                string type = typeBox.SelectedItem.ToString();
+                User user = controller.saveUser(type, username, password);
+
+                if(type=="Patient")
+                {
+                    FormPatient formPatient = new FormPatient(controller, user, formLogin);
+                    formPatient.MdiParent = this.MdiParent;
+                    this.Hide();
+                    formPatient.Show();
+                }
+                else
+                {
+                    FormTherapist formTherapist = new FormTherapist(controller, user, formLogin);
+                    formTherapist.MdiParent = this.MdiParent;
+                    this.Hide();
+                    formTherapist.Show();
+                }
             }
-
-
-           
         }
 
         private void returnButton_Click(object sender, EventArgs e)

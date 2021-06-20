@@ -6,10 +6,16 @@
     <Compile Update="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormMainMenu.cs">
+    <Compile Update="FormPatient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormCreatePrescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormTherapist.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
