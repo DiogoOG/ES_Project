@@ -14,6 +14,7 @@ namespace ClinicInterface
         Controller controller;
         User patient;
         FormLogin formLogin;
+        int currentRow;
         
 
         public FormPatient(Controller controller, User patient, FormLogin formLogin)
@@ -35,10 +36,41 @@ namespace ClinicInterface
         {
             foreach (Prescription prescription in controller.getPrescriptionsByPatient(patient))
             {
-                string therapist = controller.getUserById(prescription.IdTherapist).Username;
+                string therapist = controller.getTherapistById(prescription.IdTherapist).Username;
                 string[] row = new string[] { therapist, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
+        }
+
+        private void prescriptionsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            currentRow = e.RowIndex;
+
+            string therapist = prescriptionsTable.Rows[currentRow].Cells[0].Value.ToString();
+            string type = prescriptionsTable.Rows[currentRow].Cells[1].Value.ToString();
+            string name = prescriptionsTable.Rows[currentRow].Cells[2].Value.ToString();
+            DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[currentRow].Cells[3].Value.ToString());
+            int idPatient = patient.ID;
+
+            bool visibility = controller.getVisibility(therapist, idPatient, type, name, schedule);
+            if (visibility)
+            {
+                changeButton.Text = "Make private";
+            }
+            else changeButton.Text = "Make public";
+            changeButton.Visible = true;
+        }
+
+        private void makePrivateButton_Click(object sender, EventArgs e)
+        { 
+            string therapist = prescriptionsTable.Rows[currentRow].Cells[0].Value.ToString();
+            string type = prescriptionsTable.Rows[currentRow].Cells[1].Value.ToString();
+            string name = prescriptionsTable.Rows[currentRow].Cells[2].Value.ToString();
+            DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[currentRow].Cells[3].Value.ToString());
+            int idPatient = patient.ID;
+
+            controller.changeVisibility(therapist, idPatient, type, name, schedule);
+            changeButton.Visible = false;
         }
     }
 }

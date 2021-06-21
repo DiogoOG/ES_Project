@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace Clinic
             else if (type == "Exercise")
                 prescription.Prescriptionable = new Exercise(name);
             else prescription.Prescriptionable = new Treatment(name);
+
+            if (visibility)
+                prescription.setState(new Public());
+            else prescription.setState(new Private());
 
             return prescription;
         }

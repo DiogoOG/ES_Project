@@ -1,17 +1,15 @@
 ﻿using Clinic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
+using Clinic.Utils;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace ClinicInterface
 {
-    public partial class FormCreatePrescription : Form
+    public partial class FormCreatePrescription : Form, ISubject
     {
+        List<IObserver> observers = new List<IObserver>();
+
         private Controller controller;
         private User therapist;
         private FormTherapist formTherapist;
@@ -61,6 +59,7 @@ namespace ClinicInterface
                 if(prescription != null)
                 {
                     errorLabel.Text = "Prescription saved!";
+                    Notify();
                 }
             }
 
@@ -71,6 +70,16 @@ namespace ClinicInterface
             formTherapist.MdiParent = this.MdiParent;
             this.Hide();
             formTherapist.Show();
+        }
+
+        public void addObserver(IObserver observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void Notify()
+        {
+            observers.ForEach(o => o.Update(this));
         }
     }
 }

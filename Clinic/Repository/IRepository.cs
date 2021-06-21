@@ -11,5 +11,6 @@ namespace Clinic.Repository
         IEnumerable<E> FindAll();
         E Save(E Entity);
         int Size();
+        E Edit(E newEntity);
     }
 }

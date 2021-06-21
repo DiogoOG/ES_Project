@@ -41,5 +41,19 @@ namespace Clinic.Repository
         {
             return entities.Count;
         }
+
+        public virtual E Edit(E newEntity)
+        {
+            if (newEntity == null)
+                throw new ArgumentException("Entity cannot be null!");
+            if (!entities.ContainsKey(newEntity.ID))
+                return null;
+            else
+            {
+                entities.Remove(newEntity.ID);
+                entities.Add(newEntity.ID, newEntity);
+            }
+            return newEntity;
+        }
     }
 }

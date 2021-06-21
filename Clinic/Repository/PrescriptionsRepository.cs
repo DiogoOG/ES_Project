@@ -45,6 +45,13 @@ namespace Clinic.Repository
                 return toReturn;
             }
 
+            public override Prescription Edit(Prescription newPrescription)
+            {
+                Prescription toReturn = base.Edit(newPrescription);
+                writeToFile();
+                return toReturn;
+            }
+
         }
     }
 

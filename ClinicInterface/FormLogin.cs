@@ -57,7 +57,9 @@ namespace ClinicInterface
 
             if (valid)
             {
-                user = controller.getUserByUsername(username);
+                user = controller.getPatientByUsername(username);
+                if (user == null)
+                    user = controller.getTherapistByUsername(username);
                 if (user == null)
                     errorLabel.Text = "The user doesn't exist!";
                 else

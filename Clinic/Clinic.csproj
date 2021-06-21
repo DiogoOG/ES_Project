@@ -66,6 +66,9 @@
     <Compile Include="Users\Therapist.cs" />
     <Compile Include="Prescriptions\Prescriptionable\Treatment.cs" />
     <Compile Include="Users\User.cs" />
+    <Compile Include="Utils\IObserver.cs" />
+    <Compile Include="Utils\ISubject.cs" />
+    <Compile Include="Utils\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -73,6 +76,7 @@
   <ItemGroup>
     <Content Include="Data\patients.txt" />
     <Content Include="Data\prescriptions.txt" />
+    <Content Include="Data\sessions.txt" />
     <Content Include="Data\therapists.txt" />
   </ItemGroup>
   <ItemGroup />

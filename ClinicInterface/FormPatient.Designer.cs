@@ -39,6 +39,8 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prescriptionsTable = new System.Windows.Forms.DataGridView();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prescriptionsTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,12 +142,34 @@
             this.prescriptionsTable.Size = new System.Drawing.Size(579, 404);
             this.prescriptionsTable.TabIndex = 4;
             this.prescriptionsTable.Text = "dataGridView1";
+            this.prescriptionsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prescriptionsTable_CellContentClick);
+            // 
+            // changeButton
+            // 
+            this.changeButton.Location = new System.Drawing.Point(596, 79);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(168, 29);
+            this.changeButton.TabIndex = 5;
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Visible = false;
+            this.changeButton.Click += new System.EventHandler(this.makePrivateButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(604, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 40);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "  Select prescription to\r\n      change visibility ";
             // 
             // FormPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 453);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.changeButton);
             this.Controls.Add(this.prescriptionsTable);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.label1);
@@ -171,5 +195,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn schedule;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button makePrivateButton;
+        private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -2,6 +2,7 @@
 using Clinic.Repository;
 using Clinic.Repository.Clinic.Repository;
 using Clinic.Users;
+using Clinic.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Linq;
 namespace ClinicInterface
 {
     
-    public class Controller 
+    public class Controller
     {
         PatientsRepository patientsRepository;
         TherapistsRepository therapistsRepository;
@@ -41,50 +42,13 @@ namespace ClinicInterface
             
         }
 
-        public User getUserByUsername(string username)
-        {
-            foreach (Patient patient in patientsRepository.FindAll())
-            {
-                if (patient.Username == username)
-                    return patient;
-            }
-
-            foreach (Therapist therapist in therapistsRepository.FindAll())
-            {
-                if (therapist.Username == username)
-                    return therapist;
-            }
-
-            return null;
-        }
-
-        public User getUserById(int idUser)
-        {
-            foreach (Patient patient in patientsRepository.FindAll())
-            {
-                if (patient.ID == idUser)
-                    return patient;
-            }
-
-            foreach (Therapist therapist in therapistsRepository.FindAll())
-            {
-                if (therapist.ID == idUser)
-                    return therapist;
-            }
-
-            return null;
-        }
-
-
-
-
-
+        
 
 
         //PRESCRIPTION FUNCTIONALITIES
         public Prescription savePrescription(string patientUsername, User therapist, string type, string name, DateTime date)
         {
-            int patientId = getUserByUsername(patientUsername).ID;
+            int patientId = getPatientByUsername(patientUsername).ID;
             Prescription prescription = prescriptionFactory.getPrescription(patientId, therapist.ID, type, name, false, date);
             prescription.ID = idGenerator<Prescription>(prescriptionsRepository);
             return prescriptionsRepository.Save(prescription);
@@ -112,8 +76,49 @@ namespace ClinicInterface
             return prescriptions;
         }
 
+        public Prescription getPrescription(int idTherapist, int idPatient, string type, string name, DateTime schedule)
+        {
+            List<Prescription> prescriptions = new List<Prescription>();
 
+            Therapist therapist = therapistsRepository.FindOne(idTherapist);
+            List<Prescription> therapistPrescriptions = getPrescriptionsByTherapist(therapist);
+            foreach(Prescription p in therapistPrescriptions)
+            {
+                if ((p.IdPatient == idPatient) && (p.Prescriptionable.Type == type) && (p.Prescriptionable.Name == name) && (p.Schedule == schedule))
+                    return p;
+            }
+            return null;
+        }
 
+        public Prescription editPrescription(string newType, string newName, DateTime newDate, int idTherapist, string patient, string type, string name, DateTime schedule)
+        {
+            int idPatient = getPatientByUsername(patient).ID;
+            Prescription prescription = getPrescription(idTherapist, idPatient, type, name, schedule);
+            if (prescription != null)
+            {
+                Prescription newPrescription = prescriptionFactory.getPrescription(idPatient, idTherapist, newType, newName, false, newDate);
+                newPrescription.ID = prescription.ID;
+                return prescriptionsRepository.Edit(newPrescription);
+            }
+            return null;
+        }
+
+        public void changeVisibility(string therapist, int idPatient, string type, string name, DateTime schedule)
+        {
+            Therapist t = getTherapistByUsername(therapist);
+            Prescription p = getPrescription(t.ID, idPatient, type, name, schedule);
+
+            p.pushButton();
+            prescriptionsRepository.Edit(p);
+        }
+
+        public bool getVisibility(string therapist, int idPatient, string type, string name, DateTime schedule)
+        {
+            Therapist t = getTherapistByUsername(therapist);
+            Prescription p = getPrescription(t.ID, idPatient, type, name, schedule);
+
+            return p.Visibility;
+        }
 
 
 
@@ -134,18 +139,49 @@ namespace ClinicInterface
             return false;
         }
 
+        public Patient getPatientById(int idPatient)
+        {
+            foreach (Patient patient in patientsRepository.FindAll())
+            {
+                if (patient.ID == idPatient)
+                    return patient;
+            }
+            return null;
+        }
+
+        public Patient getPatientByUsername(string username)
+        {
+            foreach (Patient patient in patientsRepository.FindAll())
+            {
+                if (patient.Username == username)
+                    return patient;
+            }
+            return null;
+        }
 
 
+    //THERAPIST FUNCTIONALITIES
+    public Therapist getTherapistById(int idTherapist)
+    {
+        foreach (Therapist therapist in therapistsRepository.FindAll())
+        {
+            if (therapist.ID == idTherapist)
+            return therapist;
+        }
 
+        return null;
+    }
 
-        //THERAPIST FUNCTIONALITIES
+    public Therapist getTherapistByUsername(string username)
+    {
+        foreach (Therapist therapist in therapistsRepository.FindAll())
+        {
+            if (therapist.Username == username)
+            return therapist;
+        }
 
-
-
-
-
-
-
+        return null;
+    }
 
         //OTHER FUNCTIONALITITES
         private int idGenerator<E>(IRepository<int, E> repository) where E : Entity<int>
