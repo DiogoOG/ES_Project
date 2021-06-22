@@ -3,6 +3,9 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
+    <Compile Update="FormCreateSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>

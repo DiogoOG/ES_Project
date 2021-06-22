@@ -21,3 +21,4 @@ C:\Users\Install\source\repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1
 C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormPatient.resources
 C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormTherapist.resources
 C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormCreatePrescription.resources
+C:\Users\Install\Source\Repos\ES_Project\ClinicInterface\obj\Debug\netcoreapp3.1\ClinicInterface.FormCreateSession.resources

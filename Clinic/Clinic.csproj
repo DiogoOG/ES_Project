@@ -58,6 +58,7 @@
     <Compile Include="Repository\InMemoryRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\PrescriptionsRepository.cs" />
+    <Compile Include="Repository\SessionsRepository.cs" />
     <Compile Include="Repository\TherapistsRepository.cs" />
     <Compile Include="Users\Entity.cs" />
     <Compile Include="Users\EntityToFileMapping.cs" />

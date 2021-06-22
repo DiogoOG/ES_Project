@@ -16,7 +16,7 @@ namespace Clinic
         private IPrescriptionable _prescriptionable;    // What
         private DateTime _schedule;                     // When
         private bool _public;
-        private State currentState;     // Is it public?
+        private State currentState;                     // Is it public?
         private List<User> _permissions;                // List of those that have access permissions (if private)
 
         public IPrescriptionable Prescriptionable { get => _prescriptionable; set => _prescriptionable = value; }
@@ -40,8 +40,7 @@ namespace Clinic
             currentState.pushButton(this);
         }
 
-        public bool HasPermission(User user) => _public || _permissions.Contains(user);
-        public void AddPermission(User user) => _permissions.Add(user);
+        public bool HasPermission(int idUser) => _public || (idUser==IdTherapist) || (idUser==IdPatient);
         public void RevokePermission(User user) => _permissions.Remove(user);
 
         public override string ToString() {

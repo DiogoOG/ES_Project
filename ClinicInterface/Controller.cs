@@ -15,13 +15,16 @@ namespace ClinicInterface
         PatientsRepository patientsRepository;
         TherapistsRepository therapistsRepository;
         PrescriptionsRepository prescriptionsRepository;
+        SessionsRepository sessionsRepository;
         UserFactory userFactory = new UserFactory();
         PrescriptionFactory prescriptionFactory = new PrescriptionFactory();
-        public Controller(PatientsRepository patientsRepository, TherapistsRepository therapistsRepository, PrescriptionsRepository prescriptionsRepository)
+        SessionFactory sessionFactory = new SessionFactory();
+        public Controller(PatientsRepository patientsRepository, TherapistsRepository therapistsRepository, PrescriptionsRepository prescriptionsRepository, SessionsRepository sessionsRepository)
         {
             this.patientsRepository = patientsRepository;
             this.therapistsRepository = therapistsRepository;
             this.prescriptionsRepository = prescriptionsRepository;
+            this.sessionsRepository = sessionsRepository;
         }
 
 
@@ -42,7 +45,15 @@ namespace ClinicInterface
             
         }
 
-        
+        internal Session saveSession(Prescription prescription, string note)
+        {
+            Session session = sessionFactory.GetSession(prescription.ID, note);
+            session.ID = idGenerator<Session>(sessionsRepository);
+            return sessionsRepository.Save(session);
+
+        }
+
+
 
 
         //PRESCRIPTION FUNCTIONALITIES
@@ -54,6 +65,7 @@ namespace ClinicInterface
             return prescriptionsRepository.Save(prescription);
         }
 
+        //returns a list of the prescriptions of the given therapist
         public List<Prescription> getPrescriptionsByTherapist(User therapist)
         {
             List<Prescription> prescriptions = new List<Prescription>();
@@ -65,6 +77,19 @@ namespace ClinicInterface
             return prescriptions;
         }
 
+        //returns a list of public prescriptions and the prescriptions of the given therapist
+        public List<Prescription> getAccessiblePrescriptions(User therapist)
+        {
+            List<Prescription> prescriptions = new List<Prescription>();
+            foreach (Prescription prescription in prescriptionsRepository.FindAll())
+            {
+                if ((prescription.IdTherapist == therapist.ID) || (prescription.Visibility))
+                    prescriptions.Add(prescription);
+            }
+            return prescriptions;
+        }
+
+        //returns a list of the prescriptions of the given patient
         public List<Prescription> getPrescriptionsByPatient(User patient)
         {
             List<Prescription> prescriptions = new List<Prescription>();
@@ -76,6 +101,7 @@ namespace ClinicInterface
             return prescriptions;
         }
 
+        //returns the prescription that has the given attributes
         public Prescription getPrescription(int idTherapist, int idPatient, string type, string name, DateTime schedule)
         {
             List<Prescription> prescriptions = new List<Prescription>();
@@ -90,6 +116,7 @@ namespace ClinicInterface
             return null;
         }
 
+        //edits in the file the a prescription with new attributes
         public Prescription editPrescription(string newType, string newName, DateTime newDate, int idTherapist, string patient, string type, string name, DateTime schedule)
         {
             int idPatient = getPatientByUsername(patient).ID;
@@ -103,6 +130,8 @@ namespace ClinicInterface
             return null;
         }
 
+
+        //edits int the file the visibility of the prescription
         public void changeVisibility(string therapist, int idPatient, string type, string name, DateTime schedule)
         {
             Therapist t = getTherapistByUsername(therapist);
@@ -121,7 +150,6 @@ namespace ClinicInterface
         }
 
 
-
         //PATIENT FUNCTIONALITIES
         public List<Patient> getAllPatients()
         {
@@ -138,6 +166,7 @@ namespace ClinicInterface
 
             return false;
         }
+
 
         public Patient getPatientById(int idPatient)
         {

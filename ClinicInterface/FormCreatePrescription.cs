@@ -19,6 +19,7 @@ namespace ClinicInterface
             this.therapist = therapist;
             this.formTherapist = formTherapist;
             InitializeComponent();
+            datePicker.MaxSelectionCount = 1;
         }
 
         private void FormTherapist_Load(object sender, EventArgs e)
@@ -35,7 +36,7 @@ namespace ClinicInterface
 
             string patientUsername = patientsList.SelectedItem.ToString();
             string type = typeBox.SelectedItem.ToString();
-            DateTime date = datePicker.Value;
+            DateTime date = datePicker.SelectionRange.Start;
             string name = nameBox.Text;
 
             bool valid = true;

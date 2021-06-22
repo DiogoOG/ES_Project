@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    class SessionFactory
+    public class SessionFactory
     {
-        
+        public Session GetSession(int idPrescription, string note)
+        {
+            Session session = new Session()
+            {
+                IdPrescription = idPrescription,
+                Note = note
+            };
+
+            return session;
+        }
     }
 }

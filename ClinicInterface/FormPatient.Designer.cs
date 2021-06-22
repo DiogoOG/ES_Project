@@ -41,6 +41,7 @@
             this.prescriptionsTable = new System.Windows.Forms.DataGridView();
             this.changeButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.prescriptionsTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,11 +164,21 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "  Select prescription to\r\n      change visibility ";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(596, 134);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FormPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 453);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.prescriptionsTable);

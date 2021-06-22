@@ -23,7 +23,10 @@ namespace ClinicInterface
             string prescriptionsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\prescriptions.txt";
             PrescriptionsRepository prescriptionsRepository = new PrescriptionsRepository(prescriptionsFilename);
 
-            Controller controller = new Controller(patientsRepository, therapistsRepository, prescriptionsRepository);
+            string sessionsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\sessions.txt";
+            SessionsRepository sessionsRepository = new SessionsRepository(sessionsFilename);
+
+            Controller controller = new Controller(patientsRepository, therapistsRepository, prescriptionsRepository,sessionsRepository);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

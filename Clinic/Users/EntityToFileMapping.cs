@@ -6,6 +6,19 @@ namespace Clinic
 {
     public class EntityToFileMapping
     {
+        public static Session createSession(string sessionData)
+        {
+            string[] fields = sessionData.Split(',');
+            Session session = new Session()
+            {
+                ID = int.Parse(fields[0]),
+                IdPrescription = int.Parse(fields[1]),
+                Note = fields[2]
+            };
+
+            return session;
+        }
+
         public static Therapist createTherapist(string therapistData)
         {
             string[] fields = therapistData.Split(',');
