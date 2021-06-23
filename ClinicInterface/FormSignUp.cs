@@ -11,10 +11,10 @@ namespace ClinicInterface
 {
     public partial class FormSignUp : Form
     {
-        FormLogin formLogin;
+        FormLogin _formLogin;
         public FormSignUp(FormLogin formLogin)
         {
-            this.formLogin = formLogin;
+            this._formLogin = formLogin;
             InitializeComponent();
         }
 
@@ -47,18 +47,18 @@ namespace ClinicInterface
             if (valid)
             {
                 string type = typeBox.SelectedItem.ToString();
-                User user = Controller.Instance.SaveUser(type, username, password);
+                User user = Controller.Instance.saveUser(type, username, password);
 
                 if(type=="Patient")
                 {
-                    FormPatient formPatient = new FormPatient(user, formLogin);
+                    FormPatient formPatient = new FormPatient(user, _formLogin);
                     formPatient.MdiParent = this.MdiParent;
                     this.Hide();
                     formPatient.Show();
                 }
                 else
                 {
-                    FormTherapist formTherapist = new FormTherapist(user, formLogin);
+                    FormTherapist formTherapist = new FormTherapist(user, _formLogin);
                     formTherapist.MdiParent = this.MdiParent;
                     this.Hide();
                     formTherapist.Show();
@@ -68,9 +68,9 @@ namespace ClinicInterface
 
         private void returnButton_Click(object sender, EventArgs e)
         {
-            formLogin.MdiParent = this.MdiParent;
+            _formLogin.MdiParent = this.MdiParent;
             this.Hide();
-            formLogin.Show();
+            _formLogin.Show();
         }
     }
 }

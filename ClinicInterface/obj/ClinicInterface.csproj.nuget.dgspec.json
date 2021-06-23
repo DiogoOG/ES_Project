@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj": {}
+    "C:\\Users\\Diogo\\Desktop\\ES_Project\\ClinicInterface\\ClinicInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj": {
+    "C:\\Users\\Diogo\\Desktop\\ES_Project\\ClinicInterface\\ClinicInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj",
+        "projectUniqueName": "C:\\Users\\Diogo\\Desktop\\ES_Project\\ClinicInterface\\ClinicInterface.csproj",
         "projectName": "ClinicInterface",
-        "projectPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj",
+        "projectPath": "C:\\Users\\Diogo\\Desktop\\ES_Project\\ClinicInterface\\ClinicInterface.csproj",
         "packagesPath": "C:\\Users\\Diogo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\obj\\",
+        "outputPath": "C:\\Users\\Diogo\\Desktop\\ES_Project\\ClinicInterface\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj": {
-                "projectPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj"
+              "C:\\Users\\Diogo\\Desktop\\ES_Project\\Clinic\\Clinic.csproj": {
+                "projectPath": "C:\\Users\\Diogo\\Desktop\\ES_Project\\Clinic\\Clinic.csproj"
               }
             }
           }
@@ -69,11 +69,11 @@
         }
       }
     },
-    "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj": {
+    "C:\\Users\\Diogo\\Desktop\\ES_Project\\Clinic\\Clinic.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj",
+        "projectUniqueName": "C:\\Users\\Diogo\\Desktop\\ES_Project\\Clinic\\Clinic.csproj",
         "projectName": "Clinic",
-        "projectPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj"
+        "projectPath": "C:\\Users\\Diogo\\Desktop\\ES_Project\\Clinic\\Clinic.csproj"
       },
       "frameworks": {
         "net472": {}

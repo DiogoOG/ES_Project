@@ -1,15 +1,6 @@
-using TimeAssets;
-using System;
+﻿// I hate this so much, but it won't run otherwise
 
 namespace Clinic
 {
-    public class Program
-    {
-        public static int Main()
-        {
-            Console.Write("H");
-            return 0;
-        }
-    }
-   
+    class Program { public static int Main() => 0; }
 }

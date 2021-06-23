@@ -7,14 +7,14 @@ namespace ClinicInterface
 {
     public partial class FormTherapist : Form, IObserver
     {
-        private User therapist;
-        private FormLogin formLogin;
-        private bool seeAll;
-        private int currentRow;
+        private User _therapist;
+        private FormLogin _formLogin;
+        private bool _seeAll;
+        private int _currentRow;
         public FormTherapist(User therapist, FormLogin formLogin)
         {
-            this.therapist = therapist;
-            this.formLogin = formLogin;
+            this._therapist = therapist;
+            this._formLogin = formLogin;
             InitializeComponent();
             errorLabel.Visible = false;
         }
@@ -22,21 +22,21 @@ namespace ClinicInterface
         //shows all the prescriprions the therapist can see (own and public)
         private void FormTherapist_Load(object sender, EventArgs e)
         {
-            foreach(Prescription prescription in Controller.Instance.GetAccessiblePrescriptions(therapist))
+            foreach(Prescription prescription in Controller.Instance.getAccessiblePrescriptions(_therapist))
             {
                 string username = Controller.Instance.GetPatientByID(prescription.IDPatient).Username;
                 string[] row = new string[] { username, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
-            seeAll = true;
+            _seeAll = true;
             showButton.Text = "See own";
         }
 
         private void createPrescriptionButton_Click(object sender, EventArgs e)
         {
-            FormCreatePrescription formCreate = new FormCreatePrescription(therapist,this);
+            FormCreatePrescription formCreate = new FormCreatePrescription(_therapist,this);
             formCreate.MdiParent = this.MdiParent;
-            formCreate.addObserver(this);
+            formCreate.AddObserver(this);
             this.Hide();
             formCreate.Show();
         }
@@ -51,13 +51,13 @@ namespace ClinicInterface
             string newType = newTypeBox.Text;
             string newName = newNameBox.Text;
             DateTime newDate = newDatePicker.Value;
-            int idTherapist = this.therapist.ID;
-            string patient = prescriptionsTable.SelectedRows[0].Cells[0].Value.ToString();
-            string type = prescriptionsTable.SelectedRows[0].Cells[1].Value.ToString();
-            string name = prescriptionsTable.SelectedRows[0].Cells[2].Value.ToString();
-            DateTime schedule = DateTime.Parse(prescriptionsTable.SelectedRows[0].Cells[3].Value.ToString());
+            int idTherapist = this._therapist.ID;
+            string patient = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();
+            string type = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();
+            string name = prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString();
+            DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString());
 
-            Controller.Instance.EditPrescription(newType, newName, newDate, idTherapist, patient, type, name, schedule);
+            Controller.Instance.editPrescription(newType, newName, newDate, idTherapist, patient, type, name, schedule);
             newTypeBox.Text = "";
             newNameBox.Text = "";
 
@@ -76,9 +76,9 @@ namespace ClinicInterface
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            formLogin.MdiParent = this.MdiParent;
+            _formLogin.MdiParent = this.MdiParent;
             this.Hide();
-            formLogin.Show();
+            _formLogin.Show();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace ClinicInterface
         private void showFiltered()
         {
             prescriptionsTable.Rows.Clear();
-            foreach (Prescription prescription in Controller.Instance.GetPrescriptionsByTherapist(therapist))
+            foreach (Prescription prescription in Controller.Instance.getPrescriptionsByTherapist(_therapist))
             {
                 string username = Controller.Instance.GetPatientByID(prescription.IDPatient).Username;
                 string[] row = new string[] { username, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
@@ -114,44 +114,61 @@ namespace ClinicInterface
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            if(seeAll==true)
+            if(_seeAll==true)
             {
                 showFiltered();
                 showButton.Text = "See all";
-                seeAll = false;
+                _seeAll = false;
             }
             else
             {
                 prescriptionsTable.Rows.Clear();
                 FormTherapist_Load(null,null);
                 showButton.Text = "See own";
-                seeAll = true;
+                _seeAll = true;
             }
         }
 
         private void sessionButton_Click(object sender, EventArgs e)
         {
-            errorLabel.Visible = false;
-            string patient = prescriptionsTable.SelectedRows[currentRow].Cells[0].Value.ToString();
-            string type = prescriptionsTable.SelectedRows[currentRow].Cells[1].Value.ToString();
-            string name = prescriptionsTable.SelectedRows[currentRow].Cells[2].Value.ToString();
-            DateTime schedule = DateTime.Parse(prescriptionsTable.SelectedRows[currentRow].Cells[3].Value.ToString());
-            int idTherapist = therapist.ID;
-
-            Patient p = Controller.Instance.GetPatientByUsername(patient);
-            Prescription prescription = Controller.Instance.GetPrescription(idTherapist, p.ID, type, name, schedule);
-
-            if(prescription.Prescriptionable.Type=="Treatment")
+            if(_currentRow!=-1)
             {
-                FormCreateSession formCreateSession = new FormCreateSession(this, therapist, prescription);
-                formCreateSession.MdiParent = this.MdiParent;
-                this.Hide();
-                formCreateSession.Show();
+                errorLabel.Visible = false;
+                string patient = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();
+                string type = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();
+                string name = prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString();
+                DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString());
+                int idTherapist = _therapist.ID;
+
+                Patient p = Controller.Instance.GetPatientByUsername(patient);
+                Prescription prescription = Controller.Instance.GetPrescription(idTherapist, p.ID, type, name, schedule);
+
+                if (prescription.Prescriptionable.Type == "Treatment")
+                {
+                    FormCreateSession formCreateSession = new FormCreateSession(this, _therapist, prescription);
+                    formCreateSession.MdiParent = this.MdiParent;
+                    this.Hide();
+                    formCreateSession.Show();
+                }
+                else
+                {
+                    errorLabel.Visible = true;
+                }
             }
-            else
-            {
-                errorLabel.Visible = true;
-            }
+            
+        }
+
+        private void prescriptionsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _currentRow = e.RowIndex;   
+        }
+
+        private void seeSessionButton_Click(object sender, EventArgs e)
+        {
+            FormSessions formSessions = new FormSessions(this,_therapist);
+            formSessions.MdiParent = this.MdiParent;
+            this.Hide();
+            formSessions.Show();
         }
     }
 }

@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clinic 
-{
+namespace Clinic {
     public class Patient : User
-    { 
-        private List<int> _prescriptions;
+    {
     }
 }

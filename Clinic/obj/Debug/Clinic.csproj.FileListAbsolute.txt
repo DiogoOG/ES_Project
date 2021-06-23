@@ -1,32 +1,6 @@
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.AssemblyReference.cache
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\bin\Debug\Clinic.exe.config
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\bin\Debug\Clinic.exe
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\bin\Debug\Clinic.pdb
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\obj\Debug\Clinic.exe
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\code\Projeto_ES\Clinic\obj\Debug\Clinic.pdb
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.AssemblyReference.cache
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.exe
-C:\Users\ProKiii\Desktop\.Diog's stupid things\ES_Proj\Projeto_ES\Clinic\obj\Debug\Clinic.pdb
-C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.exe.config
-C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.exe
-C:\Users\Install\source\repos\ES_Project\Clinic\bin\Debug\Clinic.pdb
-C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
-C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.exe
-C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.pdb
-C:\Users\Install\Source\Repos\ES_Project\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.csproj.AssemblyReference.cache
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.pdb
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\bin\Debug\Clinic.dll.config
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\bin\Debug\Clinic.dll
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\bin\Debug\Clinic.pdb
-C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.dll
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\bin\Debug\Clinic.dll.config
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\bin\Debug\Clinic.dll
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\bin\Debug\Clinic.pdb
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\obj\Debug\Clinic.csproj.AssemblyReference.cache
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\obj\Debug\Clinic.dll
-C:\Users\Diogo\Desktop\Uni\ES\ES_Project-main\Clinic\obj\Debug\Clinic.pdb
+C:\Users\Diogo\Desktop\ES_Project\Clinic\bin\Debug\Clinic.pdb
+C:\Users\Diogo\Desktop\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Desktop\ES_Project\Clinic\obj\Debug\Clinic.pdb
+C:\Users\Diogo\Desktop\ES_Project\Clinic\bin\Debug\Clinic.exe.config
+C:\Users\Diogo\Desktop\ES_Project\Clinic\bin\Debug\Clinic.exe
+C:\Users\Diogo\Desktop\ES_Project\Clinic\obj\Debug\Clinic.exe

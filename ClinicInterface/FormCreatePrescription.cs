@@ -9,12 +9,13 @@ namespace ClinicInterface
     {
         List<IObserver> observers = new List<IObserver>();
 
-        private User therapist;
-        private FormTherapist formTherapist;
+
+        private User _therapist;
+        private FormTherapist _formTherapist;
         public FormCreatePrescription(User therapist, FormTherapist formTherapist)
         {
-            this.therapist = therapist;
-            this.formTherapist = formTherapist;
+            this._therapist = therapist;
+            this._formTherapist = formTherapist;
             InitializeComponent();
             datePicker.MaxSelectionCount = 1;
         }
@@ -30,47 +31,45 @@ namespace ClinicInterface
         private void saveButton_Click(object sender, EventArgs e)
         {
             errorLabel.Text = "";
-
-            string patientUsername = patientsList.SelectedItem.ToString();
-            string type = typeBox.SelectedItem.ToString();
-            DateTime date = datePicker.SelectionRange.Start;
-            string name = nameBox.Text;
-
-            bool valid = true;
-            string errors = "";
-            if(name=="")
+            string patientUsername = "";
+            if (patientsList.SelectedIndex!=-1)
             {
-                errors += "Invalid name!\n";
-                valid = false;
-            }
-            if(patientUsername=="")
-            {
-                errors += "Pick a patient!";
-                valid = false;
-            }
-            errorLabel.Text = errors;
-            nameBox.Text = "";
+                patientUsername = patientsList.SelectedItem.ToString();
+                string type = typeBox.SelectedItem.ToString();
+                DateTime date = datePicker.SelectionRange.Start;
+                string name = nameBox.Text;
 
-            if(valid)
-            {
-                Prescription prescription = Controller.Instance.SavePrescription(patientUsername, this.therapist, type, name, date);
-                if(prescription != null)
+                bool valid = true;
+                string errors = "";
+                if (name == "")
                 {
-                    errorLabel.Text = "Prescription saved!";
-                    Notify();
+                    errors += "Invalid name!\n";
+                    valid = false;
+                }
+                errorLabel.Text = errors;
+                nameBox.Text = "";
+
+                if (valid)
+                {
+                    Prescription prescription = Controller.Instance.savePrescription(patientUsername, this._therapist, type, name, date);
+                    if (prescription != null)
+                    {
+                        errorLabel.Text = "Prescription saved!";
+                        Notify();
+                    }
                 }
             }
-
+            else errorLabel.Text = "Select a patient!";
         }
 
         private void backButton_Click_1(object sender, EventArgs e)
         {
-            formTherapist.MdiParent = this.MdiParent;
+            _formTherapist.MdiParent = this.MdiParent;
             this.Hide();
-            formTherapist.Show();
+            _formTherapist.Show();
         }
 
-        public void addObserver(IObserver observer)
+        public void AddObserver(IObserver observer)
         {
             observers.Add(observer);
         }

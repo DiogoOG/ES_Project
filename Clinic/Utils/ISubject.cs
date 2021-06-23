@@ -8,7 +8,7 @@ namespace Clinic
 {
     public interface ISubject
     {
-        void addObserver(IObserver observer);
+        void AddObserver(IObserver observer);
         void Notify();
     }
 }

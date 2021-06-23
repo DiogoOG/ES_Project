@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    /// <summary> Represents anyone that can login into the app. </summary>
     public abstract class User : Entity<int>
     {
         public string Username { get; set; }

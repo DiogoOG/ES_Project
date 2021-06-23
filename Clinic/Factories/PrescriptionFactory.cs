@@ -8,9 +8,9 @@ namespace Clinic
 {
     public class PrescriptionFactory
     {
-        public Prescription GetPrescription(int idPatient, int idTherapist, string type, string name, bool visibility, DateTime schedule)
+        public Prescription GetPrescription(int idPatient, int idTherapist, string type, string name, bool visibility, DateTime schedule, string[] permissions)
         {
-            Prescription prescription = new Prescription() // this is such a fancy way to call a constructor, i can't
+            Prescription prescription = new Prescription()
             {
                 IDPatient = idPatient,
                 IDTherapist = idTherapist,
@@ -23,6 +23,17 @@ namespace Clinic
             else if (type == "Exercise")
                 prescription.Prescriptionable = new Exercise(name);
             else prescription.Prescriptionable = new Treatment(name);
+
+            prescription.Visibility = visibility;
+
+            if(permissions!=null)
+            {
+                for (int i = 0; i < permissions.Length-1; i++)
+                {
+                    prescription.AddPermission(int.Parse(permissions[i]));
+                    
+                }
+            }
 
             return prescription;
         }

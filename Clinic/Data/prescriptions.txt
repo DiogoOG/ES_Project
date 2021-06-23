@@ -1,3 +1,4 @@
-1,1,1,Medication,paracetamol,False,6/21/2021 4:24:23 PM
-2,2,1,Exercise,swim,True,6/21/2021 4:24:23 PM
-3,1,1,Exercise,Yoga,True,6/21/2021 4:24:52 PM
+1,1,1,Exercise,swim,True,6/23/2021 12:00:00 AM,2;3;
+2,3,1,Medication,oki,False,6/23/2021 12:00:00 AM,
+3,2,1,Medication,pills,False,6/23/2021 12:00:00 AM,
+4,1,1,Medication,lllll,False,6/23/2021 12:00:00 AM,

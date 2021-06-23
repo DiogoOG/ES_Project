@@ -45,6 +45,7 @@
             this.showButton = new System.Windows.Forms.Button();
             this.sessionButton = new System.Windows.Forms.Button();
             this.errorLabel = new System.Windows.Forms.Label();
+            this.seeSessionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.prescriptionsTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             // createPrescriptionButton
             // 
-            this.createPrescriptionButton.Location = new System.Drawing.Point(597, 32);
+            this.createPrescriptionButton.Location = new System.Drawing.Point(599, 137);
             this.createPrescriptionButton.Name = "createPrescriptionButton";
             this.createPrescriptionButton.Size = new System.Drawing.Size(168, 29);
             this.createPrescriptionButton.TabIndex = 2;
@@ -69,7 +70,7 @@
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(597, 190);
+            this.editButton.Location = new System.Drawing.Point(598, 173);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(167, 29);
             this.editButton.TabIndex = 5;
@@ -79,7 +80,7 @@
             // 
             // newNameBox
             // 
-            this.newNameBox.Location = new System.Drawing.Point(599, 259);
+            this.newNameBox.Location = new System.Drawing.Point(599, 253);
             this.newNameBox.Name = "newNameBox";
             this.newNameBox.PlaceholderText = "New name";
             this.newNameBox.Size = new System.Drawing.Size(167, 27);
@@ -88,7 +89,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(597, 321);
+            this.saveButton.Location = new System.Drawing.Point(597, 315);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(83, 29);
             this.saveButton.TabIndex = 9;
@@ -99,7 +100,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(684, 321);
+            this.cancelButton.Location = new System.Drawing.Point(684, 315);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(82, 29);
             this.cancelButton.TabIndex = 10;
@@ -111,7 +112,7 @@
             // newDatePicker
             // 
             this.newDatePicker.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.newDatePicker.Location = new System.Drawing.Point(598, 292);
+            this.newDatePicker.Location = new System.Drawing.Point(599, 286);
             this.newDatePicker.Name = "newDatePicker";
             this.newDatePicker.Size = new System.Drawing.Size(167, 23);
             this.newDatePicker.TabIndex = 11;
@@ -164,6 +165,7 @@
             this.prescriptionsTable.Size = new System.Drawing.Size(579, 404);
             this.prescriptionsTable.TabIndex = 4;
             this.prescriptionsTable.Text = "dataGridView1";
+            this.prescriptionsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prescriptionsTable_CellContentClick);
             // 
             // logoutButton
             // 
@@ -182,7 +184,7 @@
             "Medication",
             "Exercise",
             "Treatment"});
-            this.newTypeBox.Location = new System.Drawing.Point(598, 225);
+            this.newTypeBox.Location = new System.Drawing.Point(597, 219);
             this.newTypeBox.Name = "newTypeBox";
             this.newTypeBox.Size = new System.Drawing.Size(167, 28);
             this.newTypeBox.TabIndex = 3;
@@ -191,7 +193,7 @@
             // 
             // showButton
             // 
-            this.showButton.Location = new System.Drawing.Point(599, 67);
+            this.showButton.Location = new System.Drawing.Point(599, 102);
             this.showButton.Name = "showButton";
             this.showButton.Size = new System.Drawing.Size(167, 29);
             this.showButton.TabIndex = 13;
@@ -200,7 +202,7 @@
             // 
             // sessionButton
             // 
-            this.sessionButton.Location = new System.Drawing.Point(599, 103);
+            this.sessionButton.Location = new System.Drawing.Point(599, 32);
             this.sessionButton.Name = "sessionButton";
             this.sessionButton.Size = new System.Drawing.Size(166, 29);
             this.sessionButton.TabIndex = 14;
@@ -211,18 +213,29 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(606, 135);
+            this.errorLabel.Location = new System.Drawing.Point(606, 364);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(156, 40);
             this.errorLabel.TabIndex = 15;
             this.errorLabel.Text = "  Select a treatment to\r\n     create a session";
             this.errorLabel.Visible = false;
             // 
+            // seeSessionButton
+            // 
+            this.seeSessionButton.Location = new System.Drawing.Point(599, 67);
+            this.seeSessionButton.Name = "seeSessionButton";
+            this.seeSessionButton.Size = new System.Drawing.Size(167, 29);
+            this.seeSessionButton.TabIndex = 16;
+            this.seeSessionButton.Text = "See Sessions";
+            this.seeSessionButton.UseVisualStyleBackColor = true;
+            this.seeSessionButton.Click += new System.EventHandler(this.seeSessionButton_Click);
+            // 
             // FormTherapist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 453);
+            this.Controls.Add(this.seeSessionButton);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.sessionButton);
             this.Controls.Add(this.showButton);
@@ -263,5 +276,6 @@
         private System.Windows.Forms.Button showButton;
         private System.Windows.Forms.Button sessionButton;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Button seeSessionButton;
     }
 }

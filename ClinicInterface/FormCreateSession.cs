@@ -11,30 +11,30 @@ namespace ClinicInterface
 {
     public partial class FormCreateSession : Form
     {
-        FormTherapist formTherapist;
-        User therapist;
-        Prescription prescription;
+        FormTherapist _formTherapist;
+        User _therapist;
+        Prescription _prescription;
         public FormCreateSession(FormTherapist formTherapist, User therapist, Prescription prescription)
         {
-            this.formTherapist = formTherapist;
-            this.therapist = therapist;
-            this.prescription = prescription;
+            this._formTherapist = formTherapist;
+            this._therapist = therapist;
+            this._prescription = prescription;
             InitializeComponent();
             errorLabel.Visible = false;
         }
 
         private void FormCreateSession_Load(object sender, EventArgs e)
         {
-            patientBox.Text = Controller.Instance.GetPatientByID(prescription.IDPatient).Username;
-            typeBox.Text = prescription.Prescriptionable.Type;
-            nameBox.Text = prescription.Prescriptionable.Name;
-            dateBox.Text = prescription.Schedule.ToString();
+            patientBox.Text = Controller.Instance.GetPatientByID(_prescription.IDPatient).Username;
+            typeBox.Text = _prescription.Prescriptionable.Type;
+            nameBox.Text = _prescription.Prescriptionable.Name;
+            dateBox.Text = _prescription.Schedule.ToString();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             string note = notesBox.Text;
-            Session s = Controller.Instance.SaveSession(prescription, note);
+            Session s = Controller.Instance.SaveSession(_prescription, note);
             if(s!=null)
             {
                 errorLabel.Visible = true;
@@ -43,9 +43,9 @@ namespace ClinicInterface
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            formTherapist.MdiParent = this.MdiParent;
+            _formTherapist.MdiParent = this.MdiParent;
             this.Hide();
-            formTherapist.Show();
+            _formTherapist.Show();
         }
     }
 }

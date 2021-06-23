@@ -14,7 +14,9 @@ namespace Clinic
 
         public string Note { get => _note; set => _note = value; }
         public int IDPrescription { get => _idPrescription; set => _idPrescription = value; }
-
-        public override string ToString() => _idPrescription + "," + _note;
+        public override string ToString()
+        {
+            return _idPrescription + "," + _note;
+        }
     }
 }

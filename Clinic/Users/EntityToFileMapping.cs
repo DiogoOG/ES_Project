@@ -44,8 +44,9 @@ namespace Clinic
             string name = fields[4];
             bool visibility = bool.Parse(fields[5]);
             DateTime schedule = DateTime.Parse(fields[6]);
+            string[] permissions = fields[7].Split(';');
 
-            Prescription prescription = prescriptionFactory.GetPrescription(idPatient, idTherapist, type, name, visibility, schedule);
+            Prescription prescription = prescriptionFactory.GetPrescription(idPatient, idTherapist, type, name, visibility, schedule, permissions);
             prescription.ID = idPrescription;
 
             return prescription;
@@ -61,7 +62,6 @@ namespace Clinic
                 Password = fields[2]
             };
 
-            return patient;
-        }
+            return patient;}
     }
 }

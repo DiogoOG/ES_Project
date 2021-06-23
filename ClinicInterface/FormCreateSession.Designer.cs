@@ -159,7 +159,6 @@
         private System.Windows.Forms.RichTextBox notesBox;
         private System.Windows.Forms.Label Notes;
         private System.Windows.Forms.Label label1;
-        //private System.Windows.Forms.Button saevButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label errorLabel;

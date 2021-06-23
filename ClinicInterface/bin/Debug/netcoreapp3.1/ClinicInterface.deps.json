@@ -16,7 +16,7 @@
       },
       "Clinic/1.0.0": {
         "runtime": {
-          "Clinic.dll": {}
+          "Clinic.exe": {}
         }
       }
     }

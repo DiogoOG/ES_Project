@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Clinic
 {
     public class Entity<TID>

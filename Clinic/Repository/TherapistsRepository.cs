@@ -33,7 +33,7 @@ namespace Clinic
         public override Therapist Save(Therapist therapist)
         {
             Therapist toReturn = base.Save(therapist);
-            WriteToFile();
+            writeToFile();
             return toReturn;
         }
 

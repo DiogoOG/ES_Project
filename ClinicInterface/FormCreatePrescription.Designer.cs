@@ -90,7 +90,7 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(411, 175);
+            this.errorLabel.Location = new System.Drawing.Point(476, 388);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(0, 20);
             this.errorLabel.TabIndex = 8;

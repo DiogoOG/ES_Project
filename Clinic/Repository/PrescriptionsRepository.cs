@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Clinic
 {
     public class PrescriptionsRepository : FileRepository<int, Prescription>
@@ -33,14 +34,14 @@ namespace Clinic
         public override Prescription Save(Prescription prescription)
         {
             Prescription toReturn = base.Save(prescription);
-            WriteToFile();
+            writeToFile();
             return toReturn;
         }
 
         public override Prescription Edit(Prescription newPrescription)
         {
             Prescription toReturn = base.Edit(newPrescription);
-            WriteToFile();
+            writeToFile();
             return toReturn;
         }
 

@@ -31,7 +31,7 @@ namespace Clinic
         public override Patient Save(Patient patient)
         {
             Patient toReturn = base.Save(patient);
-            WriteToFile();
+            writeToFile();
             return toReturn;
         }
 

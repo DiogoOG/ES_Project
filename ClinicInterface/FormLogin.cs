@@ -13,7 +13,7 @@ namespace ClinicInterface
 {
     public partial class FormLogin : Form
     {
-        private User user;
+        private User _user;
 
         public FormLogin()
         {
@@ -55,14 +55,14 @@ namespace ClinicInterface
 
             if (valid)
             {
-                user = Controller.Instance.GetPatientByUsername(username);
-                if (user == null)
-                    user = Controller.Instance.GetTherapistByUsername(username);
-                if (user == null)
+                _user = Controller.Instance.GetPatientByUsername(username);
+                if (_user == null)
+                    _user = Controller.Instance.GetTherapistByUsername(username);
+                if (_user == null)
                     errorLabel.Text = "The user doesn't exist!";
                 else
                 {
-                    if (user.Password != password)
+                    if (_user.Password != password)
                         errorLabel.Text = "Incorrect password!";
                     else
                     {
@@ -82,7 +82,7 @@ namespace ClinicInterface
 
         private void openPatientForm()
         {
-            FormPatient formPatient = new FormPatient(user, this);
+            FormPatient formPatient = new FormPatient(_user, this);
             formPatient.MdiParent = this.MdiParent;
             this.Hide();
             formPatient.Show();
@@ -90,7 +90,7 @@ namespace ClinicInterface
 
         private void openTherapistForm()
         {
-            FormTherapist formTherapist = new FormTherapist(user, this);
+            FormTherapist formTherapist = new FormTherapist(_user, this);
             formTherapist.MdiParent = this.MdiParent;
             this.Hide();
             formTherapist.Show();

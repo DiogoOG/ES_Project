@@ -33,7 +33,7 @@ namespace Clinic
         public override Session Save(Session session)
         {
             Session toReturn = base.Save(session);
-            WriteToFile();
+            writeToFile();
             return toReturn;
         }
 

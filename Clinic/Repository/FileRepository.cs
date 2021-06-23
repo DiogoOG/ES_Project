@@ -10,32 +10,32 @@ namespace Clinic
     public abstract class FileRepository<ID, E> : InMemoryRepository<ID, E> where E : Entity<ID>
     {
 
-        protected string _filename;
-        protected CreateEntity<E> _createEntity;
+        protected string filename;
+        protected CreateEntity<E> createEntity;
 
 
         public FileRepository(String filename, CreateEntity<E> createEntity)
         {
-            this._filename = filename;
-            this._createEntity = createEntity;
+            this.filename = filename;
+            this.createEntity = createEntity;
         }
 
         protected virtual void LoadFromFile()
         {
-            using (StreamReader sr = new StreamReader(_filename))
+            using (StreamReader sr = new StreamReader(filename))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    E entity = _createEntity(line);
+                    E entity = createEntity(line);
                     _entities[entity.ID] = entity;
                 }
             }
         }
 
-        protected virtual void WriteToFile()
+        protected virtual void writeToFile()
         {
-            using (StreamWriter sw = new StreamWriter(_filename))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 foreach (KeyValuePair<ID, E> entity in _entities)
                 {
@@ -44,9 +44,9 @@ namespace Clinic
             }
         }
 
-        public virtual void CleanFile()
+        public virtual void cleanFile()
         {
-            using (StreamWriter sw = new StreamWriter(_filename))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 sw.Write("");
             }
