@@ -1,36 +1,42 @@
+using Clinic;
 using System;
 using System.IO;
 using System.Windows.Forms;
-using Clinic;
 
 namespace ClinicInterface
 {
     class Program
     {
+
+        private static string _dataPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName + "\\Clinic\\Data";
+        public static string DataPath { get => _dataPath; }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         /// [STAThread]
         static void Main(string[] args)
         {
-            string patientsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\patients.txt";
+            Console.Write(DataPath);
+
+            string patientsFilename = $"{DataPath}\\patients.txt";
             PatientsRepository patientsRepository = new PatientsRepository(patientsFilename);
 
-            string therapistsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\therapists.txt";
+            string therapistsFilename = $"{DataPath}\\therapists.txt";
             TherapistsRepository therapistsRepository = new TherapistsRepository(therapistsFilename);
 
-            string prescriptionsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\prescriptions.txt";
+            string prescriptionsFilename = $"{DataPath}\\prescriptions.txt";
             PrescriptionsRepository prescriptionsRepository = new PrescriptionsRepository(prescriptionsFilename);
 
-            string sessionsFilename = "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Data\\sessions.txt";
+            string sessionsFilename = $"{DataPath}\\sessions.txt";
             SessionsRepository sessionsRepository = new SessionsRepository(sessionsFilename);
 
-            Controller controller = new Controller(patientsRepository, therapistsRepository, prescriptionsRepository,sessionsRepository);
+            Controller.Instance = new Controller(patientsRepository, therapistsRepository, prescriptionsRepository,sessionsRepository);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin(controller)); 
+            Application.Run(new FormLogin());
+
         }
     }
 }
