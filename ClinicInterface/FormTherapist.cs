@@ -34,7 +34,7 @@ namespace ClinicInterface
 
         private void createPrescriptionButton_Click(object sender, EventArgs e)
         {
-            FormCreatePrescription formCreate = new FormCreatePrescription(Controller.Instance, therapist,this);
+            FormCreatePrescription formCreate = new FormCreatePrescription(therapist,this);
             formCreate.MdiParent = this.MdiParent;
             formCreate.addObserver(this);
             this.Hide();

@@ -24,7 +24,11 @@ namespace Clinic
 
         public bool Visibility { get => _public;  set => _public = value; }
 
+        /// <summary> Returns True if the given ID matches a User with permission to access. </summary>
         public bool HasPermission(int idUser) => _public || (idUser==IDTherapist) || (idUser==IDPatient) || _permissions.Contains(idUser);
+        /// <summary> Gvies the given ID's user permissions. </summary>
+        public void AddPermission(int idUser) => _permissions.Add(idUser);
+        /// <summary> Revokes the given ID's user's permissions. </summary>
         public void RevokePermission(int idUser) => _permissions.Remove(idUser);
 
         public override string ToString() => $"{IDPatient},{IDTherapist},{Prescriptionable.Type},{Prescriptionable.Name},{Visibility},{Schedule}";
