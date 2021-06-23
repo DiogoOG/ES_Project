@@ -11,12 +11,9 @@ namespace ClinicInterface
 {
     public partial class FormSignUp : Form
     {
-
-        private Controller controller;
         FormLogin formLogin;
-        public FormSignUp(Controller controller, FormLogin formLogin)
+        public FormSignUp(FormLogin formLogin)
         {
-            this.controller = controller;
             this.formLogin = formLogin;
             InitializeComponent();
         }
@@ -50,18 +47,18 @@ namespace ClinicInterface
             if (valid)
             {
                 string type = typeBox.SelectedItem.ToString();
-                User user = controller.SaveUser(type, username, password);
+                User user = Controller.Instance.SaveUser(type, username, password);
 
                 if(type=="Patient")
                 {
-                    FormPatient formPatient = new FormPatient(controller, user, formLogin);
+                    FormPatient formPatient = new FormPatient(user, formLogin);
                     formPatient.MdiParent = this.MdiParent;
                     this.Hide();
                     formPatient.Show();
                 }
                 else
                 {
-                    FormTherapist formTherapist = new FormTherapist(controller, user, formLogin);
+                    FormTherapist formTherapist = new FormTherapist(user, formLogin);
                     formTherapist.MdiParent = this.MdiParent;
                     this.Hide();
                     formTherapist.Show();

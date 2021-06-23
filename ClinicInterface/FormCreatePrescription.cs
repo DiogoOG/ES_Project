@@ -9,12 +9,10 @@ namespace ClinicInterface
     {
         List<IObserver> observers = new List<IObserver>();
 
-        private Controller controller;
         private User therapist;
         private FormTherapist formTherapist;
-        public FormCreatePrescription(Controller controller,User therapist, FormTherapist formTherapist)
+        public FormCreatePrescription(User therapist, FormTherapist formTherapist)
         {
-            this.controller = controller;
             this.therapist = therapist;
             this.formTherapist = formTherapist;
             InitializeComponent();
@@ -23,7 +21,7 @@ namespace ClinicInterface
 
         private void FormTherapist_Load(object sender, EventArgs e)
         {
-            foreach(Patient patient in controller.GetAllPatients())
+            foreach(Patient patient in Controller.Instance.GetAllPatients())
             {
                 patientsList.Items.Add(patient.Username);
             }
@@ -55,7 +53,7 @@ namespace ClinicInterface
 
             if(valid)
             {
-                Prescription prescription = controller.SavePrescription(patientUsername, this.therapist, type, name, date);
+                Prescription prescription = Controller.Instance.SavePrescription(patientUsername, this.therapist, type, name, date);
                 if(prescription != null)
                 {
                     errorLabel.Text = "Prescription saved!";

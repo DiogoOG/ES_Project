@@ -7,6 +7,9 @@ namespace Clinic
     
     public class Controller // Maybe we should rename this "Clinic", since it contains all the information?
     {
+        private static Controller _instance;
+        public static Controller Instance { get => _instance; set => _instance = value; }
+
         PatientsRepository _patientsRepository;
         TherapistsRepository _therapistsRepository;
         PrescriptionsRepository _prescriptionsRepository;
@@ -14,6 +17,7 @@ namespace Clinic
         UserFactory _userFactory = new UserFactory();
         PrescriptionFactory _prescriptionFactory = new PrescriptionFactory();
         SessionFactory _sessionFactory = new SessionFactory();
+
         public Controller(PatientsRepository patientsRepository, TherapistsRepository therapistsRepository, PrescriptionsRepository prescriptionsRepository, SessionsRepository sessionsRepository)
         {
             this._patientsRepository = patientsRepository;
@@ -21,7 +25,6 @@ namespace Clinic
             this._prescriptionsRepository = prescriptionsRepository;
             this._sessionsRepository = sessionsRepository;
         }
-
 
         //USER FUNCTIONALITIES
         public User SaveUser(string type, string username, string password)

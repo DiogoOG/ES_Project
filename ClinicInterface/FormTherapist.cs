@@ -7,14 +7,12 @@ namespace ClinicInterface
 {
     public partial class FormTherapist : Form, IObserver
     {
-        private Controller controller;
         private User therapist;
         private FormLogin formLogin;
         private bool seeAll;
         private int currentRow;
-        public FormTherapist(Controller controller, User therapist, FormLogin formLogin)
+        public FormTherapist(User therapist, FormLogin formLogin)
         {
-            this.controller = controller;
             this.therapist = therapist;
             this.formLogin = formLogin;
             InitializeComponent();
@@ -24,9 +22,9 @@ namespace ClinicInterface
         //shows all the prescriprions the therapist can see (own and public)
         private void FormTherapist_Load(object sender, EventArgs e)
         {
-            foreach(Prescription prescription in controller.GetAccessiblePrescriptions(therapist))
+            foreach(Prescription prescription in Controller.Instance.GetAccessiblePrescriptions(therapist))
             {
-                string username = controller.GetPatientByID(prescription.IDPatient).Username;
+                string username = Controller.Instance.GetPatientByID(prescription.IDPatient).Username;
                 string[] row = new string[] { username, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
@@ -36,7 +34,7 @@ namespace ClinicInterface
 
         private void createPrescriptionButton_Click(object sender, EventArgs e)
         {
-            FormCreatePrescription formCreate = new FormCreatePrescription(controller, therapist,this);
+            FormCreatePrescription formCreate = new FormCreatePrescription(Controller.Instance, therapist,this);
             formCreate.MdiParent = this.MdiParent;
             formCreate.addObserver(this);
             this.Hide();
@@ -59,7 +57,7 @@ namespace ClinicInterface
             string name = prescriptionsTable.SelectedRows[0].Cells[2].Value.ToString();
             DateTime schedule = DateTime.Parse(prescriptionsTable.SelectedRows[0].Cells[3].Value.ToString());
 
-            controller.EditPrescription(newType, newName, newDate, idTherapist, patient, type, name, schedule);
+            Controller.Instance.EditPrescription(newType, newName, newDate, idTherapist, patient, type, name, schedule);
             newTypeBox.Text = "";
             newNameBox.Text = "";
 
@@ -95,9 +93,9 @@ namespace ClinicInterface
         private void showFiltered()
         {
             prescriptionsTable.Rows.Clear();
-            foreach (Prescription prescription in controller.GetPrescriptionsByTherapist(therapist))
+            foreach (Prescription prescription in Controller.Instance.GetPrescriptionsByTherapist(therapist))
             {
-                string username = controller.GetPatientByID(prescription.IDPatient).Username;
+                string username = Controller.Instance.GetPatientByID(prescription.IDPatient).Username;
                 string[] row = new string[] { username, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
@@ -140,12 +138,12 @@ namespace ClinicInterface
             DateTime schedule = DateTime.Parse(prescriptionsTable.SelectedRows[currentRow].Cells[3].Value.ToString());
             int idTherapist = therapist.ID;
 
-            Patient p = controller.GetPatientByUsername(patient);
-            Prescription prescription = controller.GetPrescription(idTherapist, p.ID, type, name, schedule);
+            Patient p = Controller.Instance.GetPatientByUsername(patient);
+            Prescription prescription = Controller.Instance.GetPrescription(idTherapist, p.ID, type, name, schedule);
 
             if(prescription.Prescriptionable.Type=="Treatment")
             {
-                FormCreateSession formCreateSession = new FormCreateSession(controller, this, therapist, prescription);
+                FormCreateSession formCreateSession = new FormCreateSession(this, therapist, prescription);
                 formCreateSession.MdiParent = this.MdiParent;
                 this.Hide();
                 formCreateSession.Show();
