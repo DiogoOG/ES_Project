@@ -1,6 +1,0 @@
-C:\Users\Diogo\Desktop\ES_Project\Clinic\bin\Debug\Clinic.pdb
-C:\Users\Diogo\Desktop\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
-C:\Users\Diogo\Desktop\ES_Project\Clinic\obj\Debug\Clinic.pdb
-C:\Users\Diogo\Desktop\ES_Project\Clinic\bin\Debug\Clinic.exe.config
-C:\Users\Diogo\Desktop\ES_Project\Clinic\bin\Debug\Clinic.exe
-C:\Users\Diogo\Desktop\ES_Project\Clinic\obj\Debug\Clinic.exe
