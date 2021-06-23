@@ -8,7 +8,7 @@ namespace Clinic
 {
     public class UserFactory
     {
-        public User getUser(string type, string username, string password)
+        public User GetUser(string type, string username, string password)
         {
             User user;
 

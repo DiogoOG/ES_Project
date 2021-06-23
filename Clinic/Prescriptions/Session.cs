@@ -1,5 +1,4 @@
-﻿using Clinic.Users;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +13,8 @@ namespace Clinic
         private string _note;
 
         public string Note { get => _note; set => _note = value; }
-        public int IdPrescription { get => _idPrescription; set => _idPrescription = value; }
-        public override string ToString()
-        {
-            return _idPrescription + "," + _note;
-        }
+        public int IDPrescription { get => _idPrescription; set => _idPrescription = value; }
+
+        public override string ToString() => _idPrescription + "," + _note;
     }
 }

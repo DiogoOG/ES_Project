@@ -16,3 +16,10 @@ C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreComp
 C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.exe
 C:\Users\Install\source\repos\ES_Project\Clinic\obj\Debug\Clinic.pdb
 C:\Users\Install\Source\Repos\ES_Project\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.csproj.AssemblyReference.cache
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.pdb
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\bin\Debug\Clinic.dll.config
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\bin\Debug\Clinic.dll
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\bin\Debug\Clinic.pdb
+C:\Users\Diogo\Downloads\ES_Project-main\Clinic\obj\Debug\Clinic.dll

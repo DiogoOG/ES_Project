@@ -1,4 +1,3 @@
-using Clinic.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +11,6 @@ namespace Clinic
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public override string ToString()
-        {
-           return Username + "," + Password;
-        }
+        public override string ToString() => Username + "," + Password;
     }
 }

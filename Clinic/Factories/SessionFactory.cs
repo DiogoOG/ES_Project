@@ -12,7 +12,7 @@ namespace Clinic
         {
             Session session = new Session()
             {
-                IdPrescription = idPrescription,
+                IDPrescription = idPrescription,
                 Note = note
             };
 

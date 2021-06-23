@@ -1,8 +1,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
-using Clinic.Repository;
-using Clinic.Repository.Clinic.Repository;
+using Clinic;
 
 namespace ClinicInterface
 {
@@ -31,9 +30,7 @@ namespace ClinicInterface
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin(controller));
-
-            
+            Application.Run(new FormLogin(controller)); 
         }
     }
 }

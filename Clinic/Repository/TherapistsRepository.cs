@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clinic.Repository
+namespace Clinic
 {
     public class TherapistsRepository : FileRepository<int, Therapist>
     {
 
-        public TherapistsRepository(String filename) : base(filename, EntityToFileMapping.createTherapist)
+        public TherapistsRepository(String filename) : base(filename, EntityToFileMapping.CreateTherapist)
         {
-            loadFromFile();
+            LoadFromFile();
         }
 
         public override IEnumerable<Therapist> FindAll()
         {
-            loadFromFile();
+            LoadFromFile();
             return base.FindAll();
         }
 
         public override Therapist FindOne(int therapistId)
         {
-            loadFromFile();
+            LoadFromFile();
             return base.FindOne(therapistId);
         }
 
@@ -33,7 +33,7 @@ namespace Clinic.Repository
         public override Therapist Save(Therapist therapist)
         {
             Therapist toReturn = base.Save(therapist);
-            writeToFile();
+            WriteToFile();
             return toReturn;
         }
 

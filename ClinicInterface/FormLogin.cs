@@ -57,9 +57,9 @@ namespace ClinicInterface
 
             if (valid)
             {
-                user = controller.getPatientByUsername(username);
+                user = controller.GetPatientByUsername(username);
                 if (user == null)
-                    user = controller.getTherapistByUsername(username);
+                    user = controller.GetTherapistByUsername(username);
                 if (user == null)
                     errorLabel.Text = "The user doesn't exist!";
                 else
@@ -68,7 +68,7 @@ namespace ClinicInterface
                         errorLabel.Text = "Incorrect password!";
                     else
                     {
-                        if (controller.isPatient(username))
+                        if (controller.IsPatient(username))
                         {
                             openPatientForm();
                         }

@@ -1,5 +1,4 @@
-﻿using Clinic.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +8,12 @@ namespace Clinic
 {
     public class PrescriptionFactory
     {
-        public Prescription getPrescription(int idPatient, int idTherapist, string type, string name, bool visibility, DateTime schedule)
+        public Prescription GetPrescription(int idPatient, int idTherapist, string type, string name, bool visibility, DateTime schedule)
         {
-            Prescription prescription = new Prescription()
+            Prescription prescription = new Prescription() // this is such a fancy way to call a constructor, i can't
             {
-                IdPatient = idPatient,
-                IdTherapist = idTherapist,
+                IDPatient = idPatient,
+                IDTherapist = idTherapist,
                 Schedule = schedule,
                 Visibility = visibility
             };
@@ -24,10 +23,6 @@ namespace Clinic
             else if (type == "Exercise")
                 prescription.Prescriptionable = new Exercise(name);
             else prescription.Prescriptionable = new Treatment(name);
-
-            if (visibility)
-                prescription.setState(new Public());
-            else prescription.setState(new Private());
 
             return prescription;
         }

@@ -1,5 +1,4 @@
 ﻿using Clinic;
-using Clinic.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -25,9 +24,9 @@ namespace ClinicInterface
         //shows all the prescriprions the therapist can see (own and public)
         private void FormTherapist_Load(object sender, EventArgs e)
         {
-            foreach(Prescription prescription in controller.getAccessiblePrescriptions(therapist))
+            foreach(Prescription prescription in controller.GetAccessiblePrescriptions(therapist))
             {
-                string username = controller.getPatientById(prescription.IdPatient).Username;
+                string username = controller.GetPatientByID(prescription.IDPatient).Username;
                 string[] row = new string[] { username, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
@@ -60,7 +59,7 @@ namespace ClinicInterface
             string name = prescriptionsTable.SelectedRows[0].Cells[2].Value.ToString();
             DateTime schedule = DateTime.Parse(prescriptionsTable.SelectedRows[0].Cells[3].Value.ToString());
 
-            controller.editPrescription(newType, newName, newDate, idTherapist, patient, type, name, schedule);
+            controller.EditPrescription(newType, newName, newDate, idTherapist, patient, type, name, schedule);
             newTypeBox.Text = "";
             newNameBox.Text = "";
 
@@ -96,9 +95,9 @@ namespace ClinicInterface
         private void showFiltered()
         {
             prescriptionsTable.Rows.Clear();
-            foreach (Prescription prescription in controller.getPrescriptionsByTherapist(therapist))
+            foreach (Prescription prescription in controller.GetPrescriptionsByTherapist(therapist))
             {
-                string username = controller.getPatientById(prescription.IdPatient).Username;
+                string username = controller.GetPatientByID(prescription.IDPatient).Username;
                 string[] row = new string[] { username, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
@@ -141,8 +140,8 @@ namespace ClinicInterface
             DateTime schedule = DateTime.Parse(prescriptionsTable.SelectedRows[currentRow].Cells[3].Value.ToString());
             int idTherapist = therapist.ID;
 
-            Patient p = controller.getPatientByUsername(patient);
-            Prescription prescription = controller.getPrescription(idTherapist, p.ID, type, name, schedule);
+            Patient p = controller.GetPatientByUsername(patient);
+            Prescription prescription = controller.GetPrescription(idTherapist, p.ID, type, name, schedule);
 
             if(prescription.Prescriptionable.Type=="Treatment")
             {

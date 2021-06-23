@@ -1,9 +1,8 @@
-﻿using Clinic.Users;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Clinic.Repository
+namespace Clinic
 {
     public interface IRepository<ID, E> where E : Entity<ID>
     {

@@ -1,6 +1,5 @@
 ﻿using Clinic;
 using System;
-using Clinic.Utils;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -24,7 +23,7 @@ namespace ClinicInterface
 
         private void FormTherapist_Load(object sender, EventArgs e)
         {
-            foreach(Patient patient in controller.getAllPatients())
+            foreach(Patient patient in controller.GetAllPatients())
             {
                 patientsList.Items.Add(patient.Username);
             }
@@ -56,7 +55,7 @@ namespace ClinicInterface
 
             if(valid)
             {
-                Prescription prescription = controller.savePrescription(patientUsername, this.therapist, type, name, date);
+                Prescription prescription = controller.SavePrescription(patientUsername, this.therapist, type, name, date);
                 if(prescription != null)
                 {
                     errorLabel.Text = "Prescription saved!";

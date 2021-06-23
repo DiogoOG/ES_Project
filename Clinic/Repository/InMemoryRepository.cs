@@ -1,24 +1,23 @@
-﻿using Clinic.Users;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Clinic.Repository
+namespace Clinic
 {
 
     public class InMemoryRepository<ID, E> : IRepository<ID, E> where E : Entity<ID>
     {
-        protected IDictionary<ID, E> entities = new Dictionary<ID, E>();
+        protected IDictionary<ID, E> _entities = new Dictionary<ID, E>();
 
         public virtual IEnumerable<E> FindAll()
         {
-            return entities.Values;
+            return _entities.Values;
         }
 
         public virtual E FindOne(ID id)
         {
-            if (entities.ContainsKey(id))
-                return entities[id];
+            if (_entities.ContainsKey(id))
+                return _entities[id];
             return default(E);
         }
 
@@ -31,27 +30,27 @@ namespace Clinic.Repository
         {
             if (entity == null)
                 throw new ArgumentNullException("Entity cannot be null!");
-            if (entities.ContainsKey(entity.ID))
+            if (_entities.ContainsKey(entity.ID))
                 return null;
-            else entities.Add(entity.ID, entity);
+            else _entities.Add(entity.ID, entity);
             return entity;
         }
 
         public int Size()
         {
-            return entities.Count;
+            return _entities.Count;
         }
 
         public virtual E Edit(E newEntity)
         {
             if (newEntity == null)
                 throw new ArgumentException("Entity cannot be null!");
-            if (!entities.ContainsKey(newEntity.ID))
+            if (!_entities.ContainsKey(newEntity.ID))
                 return null;
             else
             {
-                entities.Remove(newEntity.ID);
-                entities.Add(newEntity.ID, newEntity);
+                _entities.Remove(newEntity.ID);
+                _entities.Add(newEntity.ID, newEntity);
             }
             return newEntity;
         }

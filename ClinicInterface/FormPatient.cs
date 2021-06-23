@@ -34,9 +34,9 @@ namespace ClinicInterface
 
         private void FormPatient_Load(object sender, EventArgs e)
         {
-            foreach (Prescription prescription in controller.getPrescriptionsByPatient(patient))
+            foreach (Prescription prescription in controller.GetPrescriptionsByPatient(patient))
             {
-                string therapist = controller.getTherapistById(prescription.IdTherapist).Username;
+                string therapist = controller.GetTherapistByID(prescription.IDTherapist).Username;
                 string[] row = new string[] { therapist, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
@@ -52,7 +52,7 @@ namespace ClinicInterface
             DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[currentRow].Cells[3].Value.ToString());
             int idPatient = patient.ID;
 
-            bool visibility = controller.getVisibility(therapist, idPatient, type, name, schedule);
+            bool visibility = controller.GetVisibility(therapist, idPatient, type, name, schedule);
             if (visibility)
             {
                 changeButton.Text = "Make private";
@@ -69,7 +69,7 @@ namespace ClinicInterface
             DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[currentRow].Cells[3].Value.ToString());
             int idPatient = patient.ID;
 
-            controller.changeVisibility(therapist, idPatient, type, name, schedule);
+            controller.ChangeVisibility(therapist, idPatient, type, name, schedule);
             changeButton.Visible = false;
         }
     }

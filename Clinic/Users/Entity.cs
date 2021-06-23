@@ -1,5 +1,6 @@
-﻿
-namespace Clinic.Users
+﻿using System;
+
+namespace Clinic
 {
     public class Entity<TID>
     {

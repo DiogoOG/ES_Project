@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Clinic {
-    public interface IAnotable {
+    public interface IAnotable
+    {
         string Note {get; set;}
     }
 }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Install\\Source\\Repos\\ES_Project\\ClinicInterface\\ClinicInterface.csproj": {}
+    "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Install\\Source\\Repos\\ES_Project\\ClinicInterface\\ClinicInterface.csproj": {
+    "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Install\\Source\\Repos\\ES_Project\\ClinicInterface\\ClinicInterface.csproj",
+        "projectUniqueName": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj",
         "projectName": "ClinicInterface",
-        "projectPath": "C:\\Users\\Install\\Source\\Repos\\ES_Project\\ClinicInterface\\ClinicInterface.csproj",
-        "packagesPath": "C:\\Users\\Install\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Install\\Source\\Repos\\ES_Project\\ClinicInterface\\obj\\",
+        "projectPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\ClinicInterface.csproj",
+        "packagesPath": "C:\\Users\\Diogo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\ClinicInterface\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Install\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diogo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,9 +30,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Clinic.csproj": {
-                "projectPath": "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Clinic.csproj"
+              "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj": {
+                "projectPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj"
               }
             }
           }
@@ -41,6 +46,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -59,15 +65,15 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Clinic.csproj": {
+    "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Clinic.csproj",
+        "projectUniqueName": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj",
         "projectName": "Clinic",
-        "projectPath": "C:\\Users\\Install\\Source\\Repos\\ES_Project\\Clinic\\Clinic.csproj"
+        "projectPath": "C:\\Users\\Diogo\\Desktop\\Uni\\ES\\ES_Project-main\\Clinic\\Clinic.csproj"
       },
       "frameworks": {
         "net472": {}

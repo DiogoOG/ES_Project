@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Clinic.Repository
+namespace Clinic
 
 {
     public class PatientsRepository : FileRepository<int,Patient>
     {
 
-        public PatientsRepository(String filename) : base(filename,EntityToFileMapping.createPatient) 
+        public PatientsRepository(String filename) : base(filename,EntityToFileMapping.CreatePatient) 
         {
-            loadFromFile();
+            LoadFromFile();
         }
 
         public override IEnumerable<Patient> FindAll()
         {
-            loadFromFile();
+            LoadFromFile();
             return base.FindAll();
         }
 
         public override Patient FindOne(int patientId)
         {
-            loadFromFile();
+            LoadFromFile();
             return base.FindOne(patientId);
         }
 
@@ -31,7 +31,7 @@ namespace Clinic.Repository
         public override Patient Save(Patient patient)
         {
             Patient toReturn = base.Save(patient);
-            writeToFile();
+            WriteToFile();
             return toReturn;
         }
 

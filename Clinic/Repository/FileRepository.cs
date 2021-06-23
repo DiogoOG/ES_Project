@@ -1,53 +1,52 @@
-﻿using Clinic.Users;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Clinic.Repository
+namespace Clinic
 {
     public delegate E CreateEntity<E>(string entityData);
 
     public abstract class FileRepository<ID, E> : InMemoryRepository<ID, E> where E : Entity<ID>
     {
 
-        protected string filename;
-        protected CreateEntity<E> createEntity;
+        protected string _filename;
+        protected CreateEntity<E> _createEntity;
 
 
         public FileRepository(String filename, CreateEntity<E> createEntity)
         {
-            this.filename = filename;
-            this.createEntity = createEntity;
+            this._filename = filename;
+            this._createEntity = createEntity;
         }
 
-        protected virtual void loadFromFile()
+        protected virtual void LoadFromFile()
         {
-            using (StreamReader sr = new StreamReader(filename))
+            using (StreamReader sr = new StreamReader(_filename))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    E entity = createEntity(line);
-                    entities[entity.ID] = entity;
+                    E entity = _createEntity(line);
+                    _entities[entity.ID] = entity;
                 }
             }
         }
 
-        protected virtual void writeToFile()
+        protected virtual void WriteToFile()
         {
-            using (StreamWriter sw = new StreamWriter(filename))
+            using (StreamWriter sw = new StreamWriter(_filename))
             {
-                foreach (KeyValuePair<ID, E> entity in entities)
+                foreach (KeyValuePair<ID, E> entity in _entities)
                 {
                     sw.WriteLine(entity.Key + "," + entity.Value);
                 }
             }
         }
 
-        public virtual void cleanFile()
+        public virtual void CleanFile()
         {
-            using (StreamWriter sw = new StreamWriter(filename))
+            using (StreamWriter sw = new StreamWriter(_filename))
             {
                 sw.Write("");
             }

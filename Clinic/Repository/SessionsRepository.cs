@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clinic.Repository
+namespace Clinic
 {
     public class SessionsRepository : FileRepository<int, Session>
     {
 
-        public SessionsRepository(String filename) : base(filename, EntityToFileMapping.createSession)
+        public SessionsRepository(String filename) : base(filename, EntityToFileMapping.CreateSession)
         {
-            loadFromFile();
+            LoadFromFile();
         }
 
         public override IEnumerable<Session> FindAll()
         {
-            loadFromFile();
+            LoadFromFile();
             return base.FindAll();
         }
 
         public override Session FindOne(int sessionId)
         {
-            loadFromFile();
+            LoadFromFile();
             return base.FindOne(sessionId);
         }
 
@@ -33,7 +33,7 @@ namespace Clinic.Repository
         public override Session Save(Session session)
         {
             Session toReturn = base.Save(session);
-            writeToFile();
+            WriteToFile();
             return toReturn;
         }
 

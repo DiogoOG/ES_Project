@@ -6,20 +6,20 @@ namespace Clinic
 {
     public class EntityToFileMapping
     {
-        public static Session createSession(string sessionData)
+        public static Session CreateSession(string sessionData)
         {
             string[] fields = sessionData.Split(',');
             Session session = new Session()
             {
                 ID = int.Parse(fields[0]),
-                IdPrescription = int.Parse(fields[1]),
+                IDPrescription = int.Parse(fields[1]),
                 Note = fields[2]
             };
 
             return session;
         }
 
-        public static Therapist createTherapist(string therapistData)
+        public static Therapist CreateTherapist(string therapistData)
         {
             string[] fields = therapistData.Split(',');
             Therapist therapist = new Therapist()
@@ -32,7 +32,7 @@ namespace Clinic
             return therapist;
         }
 
-        public static Prescription createPrescription(string prescriptionData)
+        public static Prescription CreatePrescription(string prescriptionData)
         {
             PrescriptionFactory prescriptionFactory = new PrescriptionFactory();
             string[] fields = prescriptionData.Split(',');
@@ -45,13 +45,13 @@ namespace Clinic
             bool visibility = bool.Parse(fields[5]);
             DateTime schedule = DateTime.Parse(fields[6]);
 
-            Prescription prescription = prescriptionFactory.getPrescription(idPatient, idTherapist, type, name, visibility, schedule);
+            Prescription prescription = prescriptionFactory.GetPrescription(idPatient, idTherapist, type, name, visibility, schedule);
             prescription.ID = idPrescription;
 
             return prescription;
         }
 
-        public static Patient createPatient(string patientData)
+        public static Patient CreatePatient(string patientData)
         {
             string[] fields = patientData.Split(',');
             Patient patient = new Patient()
@@ -61,6 +61,7 @@ namespace Clinic
                 Password = fields[2]
             };
 
-            return patient;}
+            return patient;
+        }
     }
 }

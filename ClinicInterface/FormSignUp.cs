@@ -50,7 +50,7 @@ namespace ClinicInterface
             if (valid)
             {
                 string type = typeBox.SelectedItem.ToString();
-                User user = controller.saveUser(type, username, password);
+                User user = controller.SaveUser(type, username, password);
 
                 if(type=="Patient")
                 {
