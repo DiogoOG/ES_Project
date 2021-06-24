@@ -1,0 +1,7 @@
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\bin\Debug\Clinic.dll.config
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\bin\Debug\Clinic.dll
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\bin\Debug\Clinic.pdb
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\obj\Debug\Clinic.dll
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\obj\Debug\Clinic.pdb
+D:\Semestru 2\Software Engineering\ES_Project\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache

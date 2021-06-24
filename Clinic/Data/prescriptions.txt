@@ -1,4 +1,5 @@
-1,1,1,Exercise,swim,True,6/23/2021 12:00:00 AM,2;3;
+1,1,1,Exercise,swim,False,6/23/2021 12:00:00 AM,3;2;
 2,3,1,Medication,oki,False,6/23/2021 12:00:00 AM,
-3,2,1,Medication,pills,False,6/23/2021 12:00:00 AM,
-4,1,1,Medication,lllll,False,6/23/2021 12:00:00 AM,
+3,2,1,Treatment,tratament,False,6/24/2021 3:02:34 PM,
+4,1,1,Exercise,exercise,True,6/24/2021 3:02:34 PM,
+5,3,1,Medication,aaaacmon,False,6/24/2021 12:00:00 AM,

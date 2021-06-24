@@ -45,6 +45,7 @@
             this.permissionList = new System.Windows.Forms.ListBox();
             this.decideButton = new System.Windows.Forms.Button();
             this.doneButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prescriptionsTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,12 +208,23 @@
             this.doneButton.TabIndex = 10;
             this.doneButton.Text = "Done";
             this.doneButton.UseVisualStyleBackColor = true;
+            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.Location = new System.Drawing.Point(613, 379);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(136, 20);
+            this.errorLabel.TabIndex = 11;
+            this.errorLabel.Text = "Choose a therapist!";
             // 
             // FormPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 453);
+            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.doneButton);
             this.Controls.Add(this.decideButton);
             this.Controls.Add(this.permissionList);
@@ -252,5 +264,6 @@
         private System.Windows.Forms.ListBox permissionList;
         private System.Windows.Forms.Button decideButton;
         private System.Windows.Forms.Button doneButton;
+        private System.Windows.Forms.Label errorLabel;
     }
 }

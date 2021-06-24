@@ -1,10 +1,5 @@
 ﻿using Clinic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ClinicInterface
@@ -14,7 +9,7 @@ namespace ClinicInterface
         User _patient;
         FormLogin _formLogin;
         int _currentRow=0;
-        
+        private int _currentLine=0;
 
         public FormPatient(User patient, FormLogin formLogin)
         {
@@ -41,7 +36,28 @@ namespace ClinicInterface
                 string[] row = new string[] { therapist, prescription.Prescriptionable.Type, prescription.Prescriptionable.Name, prescription.Schedule.ToString() };
                 prescriptionsTable.Rows.Add(row);
             }
-            makePrivateButton_Click(null, null);
+
+            string[] fields = getDataFromTable();
+            int idPatient = _patient.ID;
+
+            changeVisibilityButton(fields, idPatient);
+
+            permissionList.Items.Clear();
+            foreach (Therapist t in Controller.Instance.GetAllTherapists())
+            {
+                permissionList.Items.Add(t.Username);
+            }
+
+            Therapist prescriptionTherapist = Controller.Instance.GetTherapistByUsername(fields[0]);
+            Prescription p = Controller.Instance.GetPrescription(prescriptionTherapist.ID, idPatient, fields[1], fields[2], DateTime.Parse(fields[3]));
+
+            string selectedTherapist = permissionList.Items[_currentLine].ToString();
+            Therapist permissionTherapist = Controller.Instance.GetTherapistByUsername(selectedTherapist);
+
+            if (p.HasPermission(permissionTherapist.ID))
+                decideButton.Text = "Remove";
+            else decideButton.Text = "Add";
+
         }
 
         private void prescriptionsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -50,37 +66,21 @@ namespace ClinicInterface
 
             if(_currentRow!=-1)
             {
-                string therapist = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();
-                string type = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();
-                string name = prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString();
-                DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString());
+                string[] fields = getDataFromTable();
                 int idPatient = _patient.ID;
 
-                bool visibility = Controller.Instance.GetVisibility(therapist, idPatient, type, name, schedule);
-                if (visibility)
-                {
-                    changeButton.Text = "Make private";
-                }
-                else changeButton.Text = "Make public";
+                changeVisibilityButton(fields, idPatient);
             }
             
         }
 
         private void makePrivateButton_Click(object sender, EventArgs e)
-        { 
-            string therapist = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();
-            string type = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();
-            string name = prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString();
-            DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString());
+        {
+            string[] fields = getDataFromTable();
             int idPatient = _patient.ID;
 
-            Controller.Instance.ChangeVisibility(therapist, idPatient, type, name, schedule);
-            bool visibility = Controller.Instance.GetVisibility(therapist, idPatient, type, name, schedule);
-            if (visibility)
-            {
-                changeButton.Text = "Make private";
-            }
-            else changeButton.Text = "Make public";
+            Controller.Instance.ChangeVisibility(fields[0], idPatient, fields[1], fields[2], DateTime.Parse(fields[3]));
+            changeVisibilityButton(fields, idPatient);
         }
 
         private void permissionButton_Click(object sender, EventArgs e)
@@ -97,48 +97,80 @@ namespace ClinicInterface
 
         private void decideButton_Click(object sender, EventArgs e)
         {
-            string therapistUsername = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();
-            string type = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();
-            string name = prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString();
-            DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString());
-            int idPatient = _patient.ID;
-
-            Therapist prescriptionTherapist = Controller.Instance.GetTherapistByUsername(therapistUsername);
-            Prescription p = Controller.Instance.GetPrescription(prescriptionTherapist.ID, idPatient, type, name, schedule);
-
-            string selectedTherapist = permissionList.SelectedItem.ToString();
-            Therapist permissionTherapist = Controller.Instance.GetTherapistByUsername(selectedTherapist);
-
-            if (p.HasPermission(permissionTherapist.ID))
+            if (permissionList.SelectedIndex != -1)
             {
-                Controller.Instance.removePermission(p.ID,permissionTherapist.ID);
-                decideButton.Text = "Add";
+                errorLabel.Visible = false;
+                string[] fields = getDataFromTable();
+                int idPatient = _patient.ID;
+
+                Therapist prescriptionTherapist = Controller.Instance.GetTherapistByUsername(fields[0]);
+                Prescription p = Controller.Instance.GetPrescription(prescriptionTherapist.ID, idPatient, fields[1], fields[2], DateTime.Parse(fields[3]));
+
+                string selectedTherapist = permissionList.SelectedItem.ToString();
+                Therapist permissionTherapist = Controller.Instance.GetTherapistByUsername(selectedTherapist);
+
+                if (p.HasPermission(permissionTherapist.ID))
+                {
+                    Controller.Instance.removePermission(p.ID, permissionTherapist.ID);
+                    decideButton.Text = "Add";
+                }
+                else
+                {
+                    Controller.Instance.addPermission(p.ID, permissionTherapist.ID);
+                    decideButton.Text = "Remove";
+                }
             }
-            else {
-                Controller.Instance.addPermission(p.ID, permissionTherapist.ID);
-                decideButton.Text = "Remove";
-            }
+            else errorLabel.Visible = true;
+            
 
         }
 
         private void permissionList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _currentLine = permissionList.SelectedIndex;
 
-            string therapistUsername = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();
-            string type = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();
-            string name = prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString();
-            DateTime schedule = DateTime.Parse(prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString());
+            string[] fields = getDataFromTable();
             int idPatient = _patient.ID;
 
-            Therapist prescriptionTherapist = Controller.Instance.GetTherapistByUsername(therapistUsername);
-            Prescription p = Controller.Instance.GetPrescription(prescriptionTherapist.ID, idPatient, type, name, schedule);
+            Therapist prescriptionTherapist = Controller.Instance.GetTherapistByUsername(fields[0]);
+            Prescription p = Controller.Instance.GetPrescription(prescriptionTherapist.ID, idPatient, fields[1], fields[2], DateTime.Parse(fields[3]));
 
             string selectedTherapist = permissionList.SelectedItem.ToString();
             Therapist permissionTherapist = Controller.Instance.GetTherapistByUsername(selectedTherapist);
 
             if (p.HasPermission(permissionTherapist.ID))
-                decideButton.Text = "Remove";
+                    decideButton.Text = "Remove";
             else decideButton.Text = "Add";
+
+            
+        }
+
+        public string[] getDataFromTable()
+        {
+            string[] fields = new string[4];
+            fields[0] = prescriptionsTable.Rows[_currentRow].Cells[0].Value.ToString();  //therapist username
+            fields[1] = prescriptionsTable.Rows[_currentRow].Cells[1].Value.ToString();  //type of prescriptions
+            fields[2] =  prescriptionsTable.Rows[_currentRow].Cells[2].Value.ToString(); //name of prescription
+            fields[3] = prescriptionsTable.Rows[_currentRow].Cells[3].Value.ToString();  //schedule of prescription
+
+            return fields;
+        }
+
+        private void doneButton_Click(object sender, EventArgs e)
+        {
+            permissionList.Visible = false;
+            decideButton.Visible = false;
+            doneButton.Visible = false;
+        }
+
+        private void changeVisibilityButton(string[] fields, int idPatient)
+        {
+            bool visibility = Controller.Instance.GetVisibility(fields[0], idPatient, fields[1], fields[2], DateTime.Parse(fields[3]));
+            if (visibility)
+            {
+                changeButton.Text = "Make private";
+            }
+            else changeButton.Text = "Make public";
         }
     }
 }
