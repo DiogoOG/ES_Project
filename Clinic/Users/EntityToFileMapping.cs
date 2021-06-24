@@ -43,7 +43,7 @@ namespace Clinic
             string type = fields[3];
             string name = fields[4];
             bool visibility = bool.Parse(fields[5]);
-            DateTime schedule = DateTime.Parse(fields[6]);
+            DateTime schedule = Convert.ToDateTime(fields[6], System.Globalization.CultureInfo.GetCultureInfo("pt-PT").DateTimeFormat);
             string[] permissions = fields[7].Split(';');
 
             Prescription prescription = prescriptionFactory.GetPrescription(idPatient, idTherapist, type, name, visibility, schedule, permissions);
